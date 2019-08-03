@@ -13,15 +13,7 @@ def get_indices_of_item_weights(weights, length, limit):
       hash_table_insert(ht, x, weights.index(x))
 
 
-    # element_list = []
-    # for x in ht.storage:
-    #   if x is None:
-    #     # element_list.append(x)
-    #     continue
-    #   elif x is not None:
-    #
-    #     element_list.append([x.key, x.value])
-    # print('ele_list: ', element_list)
+
 
     """
     YOUR CODE HERE
