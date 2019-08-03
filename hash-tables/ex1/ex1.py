@@ -14,9 +14,11 @@ def get_indices_of_item_weights(weights, length, limit):
 
     flag = False
     i = 0
-    for x in ht.elements:
-      cur_val = ht.elements[i]
-      if x.key + x.next.key is not limit
+    for x in range(len(ht.storage)):
+      cur_val = ht.storage[i]
+      if cur_val.key + cur_val.next.key is not limit:
+
+
     # element_list = []
     # for x in ht.storage:
     #   if x is None:
