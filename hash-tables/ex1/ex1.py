@@ -8,18 +8,29 @@ from hashtables import (HashTable,
 
 def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16)
-  # {limit: limit, weights: [1,2,3...n]}
+    # {limit: limit, weights: [1,2,3...n]}
     for x in weights:
       hash_table_insert(ht, x, weights.index(x))
+
+    element_list = []
+    for x in ht.storage:
+      if x is None:
+        # element_list.append(x)
+        continue
+      elif x is not None:
+
+        element_list.append([x.key, x.value])
+    print('ele_list: ', element_list)
+
     """
     YOUR CODE HERE
     """
 
-    return None
+    return element_list
 
-
-def print_answer(answer):
-    if answer is not None:
-        print(str(answer[0] + " " + answer[1]))
-    else:
-        print("None")
+get_indices_of_item_weights([4, 6, 10, 15, 16], 5, 21)
+# def print_answer(answer):
+#     if answer is not None:
+#         print(str(answer[0] + " " + answer[1]))
+#     else:
+#         print("None")
