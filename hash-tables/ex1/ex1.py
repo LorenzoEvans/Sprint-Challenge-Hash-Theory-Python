@@ -12,12 +12,6 @@ def get_indices_of_item_weights(weights, length, limit):
     for x in weights:
       hash_table_insert(ht, x, weights.index(x))
 
-    flag = False
-    i = 0
-    for x in range(len(ht.storage)):
-      cur_val = ht.storage[i]
-      if cur_val.key + cur_val.next.key is not limit:
-
 
     # element_list = []
     # for x in ht.storage:
@@ -27,13 +21,13 @@ def get_indices_of_item_weights(weights, length, limit):
     #   elif x is not None:
     #
     #     element_list.append([x.key, x.value])
-    print('ele_list: ', element_list)
+    # print('ele_list: ', element_list)
 
     """
     YOUR CODE HERE
     """
 
-    return element_list
+    # return element_list
 
 get_indices_of_item_weights([4, 6, 10, 15, 16], 5, 21)
 # def print_answer(answer):
