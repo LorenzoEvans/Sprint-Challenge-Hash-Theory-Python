@@ -18,9 +18,15 @@ def get_indices_of_item_weights(weights, length, limit):
   print(new_weights)
   sum = new_weights[len(new_weights) - 1]
   print(sum)
-
-  for x in range(len(new_weights)):
-    print(x)
+  result = ()
+  for x in reversed(range(len(new_weights))):
+    if not new_weights[x - 1]:
+      print('No item at that index.')
+    elif (sum % new_weights[x]) in new_weights:
+      result = result + ((sum % new_weights[x]), new_weights[x])
+      print('found it', new_weights.index(sum % new_weights[x], result[0], result[1]))
+    else:
+      print(f"new_weights[x]: {new_weights[x]} + new_weights[x - 1]: {new_weights[x - 1]}, sum: {new_weights[x] + new_weights[x - 1]}")
 
 
   # Given the list [4, 6, 10, 15, 16], what can we say?
