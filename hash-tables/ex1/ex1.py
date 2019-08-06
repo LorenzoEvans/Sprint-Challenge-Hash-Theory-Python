@@ -13,20 +13,30 @@ def get_indices_of_item_weights(weights, length, limit):
   new_weights = []
   for x in weights:
     new_weights.append(x)
-  new_weights.append(limit)
+  if limit not in new_weights:
+    new_weights.append(limit)
+  elif limit in new_weights:
+    result = ()
+    result = result + (new_weights[new_weights.index(0)], limit)
+    print('Found it.', 'limit: ',limit)
+    print(result)
   new_weights.sort()
-  print(new_weights)
+  # print(new_weights)
   sum = new_weights[len(new_weights) - 1]
-  print(sum)
-  result = ()
+  # print(sum)
+  # result = ()
   for x in reversed(range(len(new_weights))):
-    if not new_weights[x - 1]:
-      print('No item at that index.')
-    elif (sum % new_weights[x]) in new_weights:
-      result = result + ((sum % new_weights[x]), new_weights[x])
-      print('found it', new_weights.index(sum % new_weights[x], result[0], result[1]))
+    if x is 0:
+      print('Done.')
+    elif sum % new_weights[x] in new_weights:
+      val = new_weights.index(sum % new_weights[x])
+      # result_2 = result + (new_weights.index([new_weights.index(sum % new_weights[x])]).pop(), new_weights[x])
+      # print('found it', new_weights.index(sum % new_weights[x]), result_2)
+    if x is 0:
+      print('Done.')
     else:
-      print(f"new_weights[x]: {new_weights[x]} + new_weights[x - 1]: {new_weights[x - 1]}, sum: {new_weights[x] + new_weights[x - 1]}")
+      print('Python error messages are useless.')
+      # print(f"new_weights[x]: {new_weights[x]} + new_weights[x - 1]: {new_weights[x - 1]}, sum: {(new_weights[x] + new_weights[x - 1])}")
 
 
   # Given the list [4, 6, 10, 15, 16], what can we say?
@@ -88,10 +98,6 @@ def get_indices_of_item_weights(weights, length, limit):
 
 
   # Any number greater than the limit can not be added to the limit to derive it.
-  # Assume set W = W = { x | x ∈ ℕ }, currently: {0, 3, 6, 7, 12, 14, 19, 25, 40.},  W = { x | x ∈ ℕ }.
-  # Assuming the limit is also { x | x ∈ ℕ }.
-  # we z => ƛa.a + b.
-  # limit = ∃x | x = z(a)(z(b)), a ∧ b ∈ W.
 
   # Can we assume, that for every sorted list with the limit added, the limit modulo some element in the list,
 
@@ -114,7 +120,7 @@ def get_indices_of_item_weights(weights, length, limit):
 
   # return element_list
 
-get_indices_of_item_weights([4, 6, 10, 15, 16], 5, 21)
+get_indices_of_item_weights([12, 6, 7, 14, 19, 3, 0, 25, 40], 9, 7)
 # def print_answer(answer):
 #     if answer is not None:
 #         print(str(answer[0] + " " + answer[1]))
