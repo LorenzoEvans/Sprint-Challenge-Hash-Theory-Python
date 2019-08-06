@@ -16,6 +16,12 @@ def get_indices_of_item_weights(weights, length, limit):
   new_weights.append(limit)
   new_weights.sort()
   print(new_weights)
+  sum = new_weights[len(new_weights) - 1]
+  print(sum)
+
+  for x in range(len(new_weights)):
+    print(x)
+
 
   # Given the list [4, 6, 10, 15, 16], what can we say?
 
