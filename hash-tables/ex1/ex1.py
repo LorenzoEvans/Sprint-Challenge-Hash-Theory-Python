@@ -8,35 +8,36 @@ from hashtables import (HashTable,
 
 def get_indices_of_item_weights(weights, length, limit):
   ht = HashTable(16)
-  for x in weights:
-    hash_table_insert(ht, x, weights.index(x))
   new_weights = []
   for x in weights:
+    hash_table_insert(ht, x, weights.index(x))
     new_weights.append(x)
   if limit not in new_weights:
     new_weights.append(limit)
   elif limit in new_weights:
     result = ()
     result = result + (new_weights[new_weights.index(0)], limit)
-    print('Found it.', 'limit: ',limit)
-    print(result)
+    # print('Found it.', 'limit: ',limit)
+    # print(result)
   new_weights.sort()
-  # print(new_weights)
   sum = new_weights[len(new_weights) - 1]
-  # print(sum)
-  # result = ()
+
   for x in reversed(range(len(new_weights))):
     if x is 0:
       print('Done.')
     elif sum % new_weights[x] in new_weights:
+      items = ()
+      items = items + (sum % new_weights[x], new_weights[x])
+      print(items)
       val = new_weights.index(sum % new_weights[x])
-      # result_2 = result + (new_weights.index([new_weights.index(sum % new_weights[x])]).pop(), new_weights[x])
-      # print('found it', new_weights.index(sum % new_weights[x]), result_2)
+      print(val)
+      # result_2 = result + (new_weights.index([new_weights.index(sum % new_weights[x])])[0], new_weights[x])
+      # print(result_2)
     if x is 0:
       print('Done.')
     else:
-      print('Python error messages are useless.')
-      # print(f"new_weights[x]: {new_weights[x]} + new_weights[x - 1]: {new_weights[x - 1]}, sum: {(new_weights[x] + new_weights[x - 1])}")
+      print(f"new_weights[x]: {new_weights[x]} + new_weights[x - 1]: {new_weights[x - 1]}")
+      print(f"sum: {(new_weights[x] + new_weights[x - 1])}")
 
 
   # Given the list [4, 6, 10, 15, 16], what can we say?
