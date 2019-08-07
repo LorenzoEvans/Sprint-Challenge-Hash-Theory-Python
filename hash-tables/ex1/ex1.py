@@ -32,31 +32,36 @@ def get_indices_of_item_weights(weights, length, limit):
 
   new_weights.sort()
   sum = new_weights[len(new_weights) - 1]
-
+  print('new_weights: ',new_weights)
   for x in reversed(range(len(new_weights))):
     if x is 0:
       print('Done.')
     elif sum % new_weights[x] in new_weights:
       items = ()
       items = items + (sum % new_weights[x], new_weights[x])
-      # print(items)
+      print(items)
       val = new_weights.index(sum % new_weights[x])
-      # print('val is: ',val)
-      # print('x is: ',x)
+      print('val is: ',val)
+      print('x is: ',x)
       val1 = new_weights[val]
       val2 = limit - new_weights[val]
       result = result + (val1, val2)
-      # print('limit - val: ',limit - new_weights[val])
-      # print(new_weights.index(limit - new_weights[val]))
-      # print(new_weights[val])
+      print('limit - val: ',limit - new_weights[val])
+      print(new_weights.index(limit - new_weights[val]))
+      print(new_weights[val])
       return result
       # result_2 = result + (new_weights.index([new_weights.index(sum % new_weights[x])])[0], new_weights[x])
       # print(result_2)
-    if x is 0:
-      print('Done.')
-    else:
-      print(f"new_weights[x]: {new_weights[x]} + new_weights[x - 1]: {new_weights[x - 1]}")
-      # print(f"sum: {(new_weights[x] + new_weights[x - 1])}")
+    elif sum % new_weights[x] not in new_weights:
+      if new_weights[x] + new_weights[x - 1] == limit:
+        result = result + (new_weights.index(new_weights[x]), new_weights.index(new_weights[x - 1]))
+        print(result)
+        return result
+      print(x)
+
+    # else:
+    #   print(f"new_weights[x]: {new_weights[x]} + new_weights[x - 1]: {new_weights[x - 1]}")
+    #   print(f"sum: {(new_weights[x] + new_weights[x - 1])}")
 
 
   # Given the list [4, 6, 10, 15, 16], what can we say?
@@ -134,13 +139,13 @@ def get_indices_of_item_weights(weights, length, limit):
 
   # Obviously,
 
-  """
-	YOUR CODE HERE
-	"""
+  # """
+	# YOUR CODE HERE
+	# """
 
   # return element_list
 
-print(get_indices_of_item_weights([4, 6, 10, 15, 16], 5, 21))
+print(get_indices_of_item_weights([4, 4], 2, 8))
 # def print_answer(answer):
 #     if answer is not None:
 #         print(str(answer[0] + " " + answer[1]))
