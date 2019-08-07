@@ -8,17 +8,28 @@ from hashtables import (HashTable,
 
 def get_indices_of_item_weights(weights, length, limit):
   ht = HashTable(16)
+
   new_weights = []
+
+  result = ()
+
   for x in weights:
+
     hash_table_insert(ht, x, weights.index(x))
     new_weights.append(x)
+
+  if len(weights) == 1:
+    return None
   if limit not in new_weights:
+
     new_weights.append(limit)
+
   elif limit in new_weights:
-    result = ()
     result = result + (new_weights[new_weights.index(0)], limit)
     # print('Found it.', 'limit: ',limit)
-    # print(result)
+    # print('result is: ',result)
+    return result
+
   new_weights.sort()
   sum = new_weights[len(new_weights) - 1]
 
@@ -28,16 +39,24 @@ def get_indices_of_item_weights(weights, length, limit):
     elif sum % new_weights[x] in new_weights:
       items = ()
       items = items + (sum % new_weights[x], new_weights[x])
-      print(items)
+      # print(items)
       val = new_weights.index(sum % new_weights[x])
-      print(val)
+      # print('val is: ',val)
+      # print('x is: ',x)
+      val1 = new_weights[val]
+      val2 = limit - new_weights[val]
+      result = result + (val1, val2)
+      # print('limit - val: ',limit - new_weights[val])
+      # print(new_weights.index(limit - new_weights[val]))
+      # print(new_weights[val])
+      return result
       # result_2 = result + (new_weights.index([new_weights.index(sum % new_weights[x])])[0], new_weights[x])
       # print(result_2)
     if x is 0:
       print('Done.')
     else:
       print(f"new_weights[x]: {new_weights[x]} + new_weights[x - 1]: {new_weights[x - 1]}")
-      print(f"sum: {(new_weights[x] + new_weights[x - 1])}")
+      # print(f"sum: {(new_weights[x] + new_weights[x - 1])}")
 
 
   # Given the list [4, 6, 10, 15, 16], what can we say?
@@ -121,7 +140,7 @@ def get_indices_of_item_weights(weights, length, limit):
 
   # return element_list
 
-get_indices_of_item_weights([12, 6, 7, 14, 19, 3, 0, 25, 40], 9, 7)
+print(get_indices_of_item_weights([4, 6, 10, 15, 16], 5, 21))
 # def print_answer(answer):
 #     if answer is not None:
 #         print(str(answer[0] + " " + answer[1]))
