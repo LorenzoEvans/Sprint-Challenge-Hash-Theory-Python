@@ -26,54 +26,30 @@ def get_indices_of_item_weights(weights, length, limit):
 
   elif limit in new_weights:
     result = result + (new_weights.index(0), new_weights.index(limit))
-    # print('Found it.', 'limit: ',limit)
-    # result = result + ()
-    print('result is: ',result)
     return result
 
   new_weights.sort()
   sum = new_weights[len(new_weights) - 1]
-  print('new_weights: ',new_weights)
+
   for x in reversed(range(len(new_weights))):
     if x is 0:
       print('Done.')
     elif sum % new_weights[x] in new_weights:
       items = ()
       items = items + (sum % new_weights[x], new_weights[x])
-      print(items)
       val = new_weights.index(sum % new_weights[x])
-      print('val is: ',val)
-      print('x is: ',x)
-      val1 = new_weights[val]
       val2 = new_weights.index(limit - new_weights[val])
       result = result + (val2, val)
-      # print('limit - val: ',limit - new_weights[val])
-      # print(new_weights.index(limit - new_weights[val]))
-      # print(new_weights[val])
-      print("is",result)
       return result
-      # result_2 = result + (new_weights.index([new_weights.index(sum % new_weights[x])])[0], new_weights[x])
-      # print(result_2)
     elif sum % new_weights[x] not in new_weights:
       if new_weights[x] + new_weights[x - 1] == limit:
         result = (new_weights.index(new_weights[x]))
-
-        print('is',result)
         x_count = new_weights.count(new_weights[x])
         if x_count > 1:
           new_weights[x] = None
-          # new_weights.remove(new_weights[x])
-          print(new_weights)
           result = (x, result)
-          print("result is", result)
-        print("x count is",x_count)
-        print("x is:", x, "new_weights[x]", new_weights[x])
         return result
-      print(x)
 
-    # else:
-    #   print(f"new_weights[x]: {new_weights[x]} + new_weights[x - 1]: {new_weights[x - 1]}")
-    #   print(f"sum: {(new_weights[x] + new_weights[x - 1])}")
 
 
   # Given the list [4, 6, 10, 15, 16], what can we say?
@@ -149,13 +125,6 @@ def get_indices_of_item_weights(weights, length, limit):
 
 
 
-  # Obviously,
-
-  # """
-	# YOUR CODE HERE
-	# """
-
-  # return element_list
 
 print(get_indices_of_item_weights([4, 4], 2, 8))
 # def print_answer(answer):
