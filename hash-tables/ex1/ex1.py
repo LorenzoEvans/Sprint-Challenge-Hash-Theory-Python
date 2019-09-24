@@ -25,10 +25,10 @@ def get_indices_of_item_weights(weights, length, limit):
     new_weights.append(limit)
 
   elif limit in new_weights:
-    # result = result + (new_weights[new_weights.index(0)], limit)
+    result = result + (new_weights.index(0), new_weights.index(limit))
     # print('Found it.', 'limit: ',limit)
     result = result + ()
-    # print('result is: ',result)
+    print('result is: ',result)
     return result
 
   new_weights.sort()
