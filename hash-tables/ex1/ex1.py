@@ -27,7 +27,7 @@ def get_indices_of_item_weights(weights, length, limit):
   elif limit in new_weights:
     result = result + (new_weights.index(0), new_weights.index(limit))
     # print('Found it.', 'limit: ',limit)
-    result = result + ()
+    # result = result + ()
     print('result is: ',result)
     return result
 
@@ -45,18 +45,29 @@ def get_indices_of_item_weights(weights, length, limit):
       print('val is: ',val)
       print('x is: ',x)
       val1 = new_weights[val]
-      val2 = limit - new_weights[val]
-      result = result + (val1, val2)
-      print('limit - val: ',limit - new_weights[val])
-      print(new_weights.index(limit - new_weights[val]))
-      print(new_weights[val])
+      val2 = new_weights.index(limit - new_weights[val])
+      result = result + (val2, val)
+      # print('limit - val: ',limit - new_weights[val])
+      # print(new_weights.index(limit - new_weights[val]))
+      # print(new_weights[val])
+      print("is",result)
       return result
       # result_2 = result + (new_weights.index([new_weights.index(sum % new_weights[x])])[0], new_weights[x])
       # print(result_2)
     elif sum % new_weights[x] not in new_weights:
       if new_weights[x] + new_weights[x - 1] == limit:
-        result = result + (new_weights.index(new_weights[x]), new_weights.index(new_weights[x - 1]))
-        print(result)
+        result = (new_weights.index(new_weights[x]))
+
+        print('is',result)
+        x_count = new_weights.count(new_weights[x])
+        if x_count > 1:
+          new_weights[x] = None
+          # new_weights.remove(new_weights[x])
+          print(new_weights)
+          result = (x, result)
+          print("result is", result)
+        print("x count is",x_count)
+        print("x is:", x, "new_weights[x]", new_weights[x])
         return result
       print(x)
 
